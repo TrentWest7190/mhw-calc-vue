@@ -108,8 +108,6 @@ export default {
     }
 
     input, select {
-      padding: 0px;
-      border: 1px solid black;
       height: 35px;
       font-size: 1.3em;
     }

@@ -78,7 +78,6 @@ export default {
 .mod-selector {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
 
   .modifier ~ .modifier {
@@ -87,15 +86,15 @@ export default {
 
   .modifier {
     display: flex;
-    font-size: 1.25em;
-    height: 20%;
+    font-size: 1.1em;
     justify-content: space-between;
+    height: 40px;
     padding-top: 2px;
     padding-bottom: 2px;
 
     select {
       width: 100px;
-      font-size: 1.25em;
+      font-size: 1.1em;
     }
 
     .mod-text {

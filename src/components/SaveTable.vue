@@ -4,7 +4,7 @@
       <img :src="config.icon" class="config-icon"/>
       <span class="config-name">{{ config.name }}</span>
       <div class="config-desc">
-        <span v-if="!modifiersExist(config.modifiers)" :style="{ 'font-weight' : 'bolder' }">No Modifers Exists</span>
+        <span v-if="!modifiersExist(config.modifiers)" :style="{ 'font-weight' : 'bolder' }">No Modifers Applied</span>
         <div v-else class="mod-descs">
           <div v-for="(mod, modName) in config.modifiers" :key="modName">
             <span class="mod-name">{{ skillData[modName].name }}: </span>
@@ -61,6 +61,7 @@ export default {
 
 <style lang='scss'>
 .config-container {
+  padding-right: 20px;
   .config ~ .config {
     border-top: 1px gray dashed;
   }
@@ -116,8 +117,9 @@ export default {
   .remove-button {
     grid-column: 2 / 3;
     grid-row: 1/ 2;
-    align-self: start;
+    align-self: center;
     justify-self: end;
+    margin-right: 10px;
   }
 }
 </style>

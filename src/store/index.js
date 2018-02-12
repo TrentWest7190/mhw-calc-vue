@@ -39,6 +39,10 @@ const state = {
     agitator: {
       level: 0,
       mod: {}
+    },
+    maximumMight: {
+      level: 0,
+      mod: {}
     }
   },
   savedConfigs: []

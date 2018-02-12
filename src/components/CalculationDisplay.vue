@@ -1,20 +1,27 @@
 <template>
-  <div class="calc-display">
-    <div>
-      <span>True Attack</span>
-      <span>{{ trueAttack }}</span>
+  <div class="display-container">
+    <div class="calc-display">
+      <div>
+        <span>True Attack</span>
+        <span>{{ trueAttack }}</span>
+      </div>
+      <div>
+        <span>Total Attack Modifier</span>
+        <span>{{ totalAttackMod }}</span>
+      </div>
+      <div :class="{ over: totalAffinityMod > 100}">
+        <span>Total Affinity Modifier</span>
+        <span>{{ totalAffinityMod }}</span>
+      </div>
+      <div class="final-attack">
+        <span>Final Attack</span>
+        <span>{{ finalDamage }}</span>
+      </div>
     </div>
     <div>
-      <span>Total Attack Modifier</span>
-      <span>{{ totalAttackMod }}</span>
-    </div>
-    <div>
-      <span>Total Affinity Modifier</span>
-      <span>{{ totalAffinityMod }}</span>
-    </div>
-    <div>
-      <span>Final Attack</span>
-      <span>{{ finalDamage }}</span>
+      <span>Save Config As:</span>
+      <input v-model="configName"/>
+      <button @click="saveConfig" :class="{ disabled : disableSave }" :disabled="disableSave">Save</button>
     </div>
   </div>
 </template>
@@ -30,23 +37,59 @@ export default {
       totalAttackMod: 'getTotalAttackMod',
       totalAffinityMod: 'getTotalAffinityMod',
       trueAttack: 'getTrueAttack'
-    })
+    }),
+    disableSave () {
+      const configNames = this.$store.state.savedConfigs.map(conf => conf.name)
+      return configNames.includes(this.configName) || this.$store.state.weaponClass.name.length === 0
+    },
+    configName: {
+      get () {
+        return this.$store.state.configName
+      },
+      set (value) {
+        this.$store.commit('setConfigName', value)
+      }
+    }
+  },
+  methods: {
+    saveConfig () {
+      this.$store.commit('saveConfig', this.finalDamage)
+    }
   }
 }
 </script>
 
-<style lang='scss'>
-.calc-display {
+<style lang='scss' scoped>
+
+.disabled {
+  opacity: .5;
+}
+
+.display-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
+}
+
+.calc-display {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  .final-attack {
+    color: goldenrod;
+  }
 
   > div {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+
+    &.over {
+      color: rgba(red, .8);
+    }
 
     > span {
       text-align: center;
