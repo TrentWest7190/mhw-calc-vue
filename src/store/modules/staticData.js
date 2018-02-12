@@ -1,4 +1,5 @@
 import * as icons from '../../assets/icons'
+import * as skillData from './skillData'
 
 const state = {
   weaponData: {
@@ -72,9 +73,36 @@ const state = {
       value: 1.2,
       icon: icons.Bow
     }
+  },
+  sharpnessData: {
+    yellow: {
+      name: 'Yellow',
+      multiplier: 1
+    },
+    green: {
+      name: 'Green',
+      multiplier: 1.05
+    },
+    blue: {
+      name: 'Blue',
+      multiplier: 1.2
+    },
+    white: {
+      name: 'White',
+      multiplier: 1.32
+    }
+  },
+  skillData
+}
+
+const getters = {
+  getSkillNames (state) {
+    return Object.values(state.skillData).map(skill => skill.name)
   }
 }
 
 export default {
-  state
+  namespaced: true,
+  state,
+  getters
 }

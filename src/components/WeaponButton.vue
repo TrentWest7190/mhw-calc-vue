@@ -1,6 +1,10 @@
 <template functional>
-  <button class="weapon-button">
-      <img class="weapon-button-img" :src="props.src">
+  <button
+    class="weapon-button"
+    :class="{ active: props.isActive }"
+    @click="props.click(props.weaponClass)"
+  >
+    <img class="weapon-button-img" :src="props.weaponClass.icon">
   </button>
 </template>
 
@@ -10,12 +14,16 @@
   border: 3px solid black;
   border-radius: 3px;
   margin: 3px;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   padding: 1px;
+  &.active {
+    background-color: green;
+  }
   &-img {
-    height: 36px;
-    width: 36px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
   }
 }
 </style>
