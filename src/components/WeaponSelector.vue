@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     setWeaponRaw (input) {
-      const value = input.target.valueAsNumber
+      const value = input.target.value
       this.$store.commit('setWeaponRaw', value)
     },
     setWeaponAffinity (input) {
