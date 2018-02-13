@@ -9,7 +9,7 @@
         <span>Total Attack Modifier</span>
         <span>{{ totalAttackMod }}</span>
       </div>
-      <div :class="{ over: totalAffinityMod > 100}">
+      <div :class="{ over: totalAffinity > 100}">
         <span>Total Affinity Modifier</span>
         <span>{{ totalAffinityMod }}</span>
       </div>
@@ -36,7 +36,8 @@ export default {
       finalDamage: 'getFinalDamage',
       totalAttackMod: 'getTotalAttackMod',
       totalAffinityMod: 'getTotalAffinityMod',
-      trueAttack: 'getTrueAttack'
+      trueAttack: 'getTrueAttack',
+      totalAffinity: 'getTotalAffinity'
     }),
     disableSave () {
       const configNames = this.$store.state.savedConfigs.map(conf => conf.name)
