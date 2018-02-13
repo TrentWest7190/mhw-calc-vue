@@ -36,9 +36,11 @@ export default {
       finalDamage: 'getFinalDamage',
       totalAttackMod: 'getTotalAttackMod',
       totalAffinityMod: 'getTotalAffinityMod',
-      trueAttack: 'getTrueAttack',
-      totalAffinity: 'getTotalAffinity'
+      trueAttack: 'getTrueAttack'
     }),
+    totalAffinity () {
+      return this.$store.state.weapon.affinity + this.totalAffinityMod
+    },
     disableSave () {
       const configNames = this.$store.state.savedConfigs.map(conf => conf.name)
       return configNames.includes(this.configName) || this.$store.state.weaponClass.name.length === 0
