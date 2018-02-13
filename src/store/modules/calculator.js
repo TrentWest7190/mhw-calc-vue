@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import { getTotalModValue } from '../../helpers/calculate'
+import { getTotalModValue, getTotalModValueMultiply } from '../../helpers/calculate'
 
 const getters = {
   getSharpnessMulti (state, getters, rootState) {
@@ -13,6 +13,10 @@ const getters = {
     const modifierArray = Object.values(rootState.modifiers).map(mod => mod.mod)
     return modifierArray.reduce(getTotalModValue('affinity'), 0)
   },
+  getTotalAttackMultiplier (state, getters, rootState) {
+    const modifierArray = Object.values(rootState.modifiers).map(mod => mod.mod)
+    return modifierArray.reduce(getTotalModValueMultiply('attackMulti'), 1)
+  },
   getTrueAttack (state, getters, rootState) {
     return Math.round(rootState.weapon.raw / rootState.weaponClass.value)
   },
@@ -25,7 +29,7 @@ const getters = {
     return affinity
   },
   getTotalAttack (state, getters, rootState) {
-    return getters.getTrueAttack + getters.getTotalAttackMod
+    return new BigNumber(getters.getTrueAttack).times(getters.getTotalAttackMultiplier).plus(getters.getTotalAttackMod).toNumber()
   },
   critMultiplier (state, getters, rootState) {
     const critBoost = rootState.modifiers.criticalBoost.mod.critMulti || 0.25

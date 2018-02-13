@@ -58,7 +58,8 @@ export default {
       const descLookup = {
         attack: 'Attack: +',
         affinity: 'Affinity: +',
-        critMulti: 'Crit Damage: '
+        critMulti: 'Crit Damage: ',
+        attackMulti: 'Attack Multiplier: +'
       }
       let description = ''
       for (let attr in mod) {

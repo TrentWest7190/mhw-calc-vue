@@ -92,6 +92,7 @@ export default {
 
     .mod-descs {
       display: flex;
+      flex-wrap: wrap;
 
       > div {
         margin: 5px;

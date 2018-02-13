@@ -4,6 +4,9 @@ import criticalBoost from './CriticalBoost'
 import weaknessExploit from './WeaknessExploit'
 import agitator from './Agitator'
 import maximumMight from './MaximumMight'
+import heroics from './Heroics'
+import nonElementalBoost from './NonElementalBoost'
+import resentment from './Resentment'
 
 export {
   attackBoost,
@@ -11,5 +14,8 @@ export {
   criticalBoost,
   weaknessExploit,
   agitator,
-  maximumMight
+  maximumMight,
+  heroics,
+  nonElementalBoost,
+  resentment
 }

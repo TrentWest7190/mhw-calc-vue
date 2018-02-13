@@ -3,6 +3,18 @@ import Vuex from 'vuex'
 import staticData from './modules/staticData'
 import calculator from './modules/calculator'
 
+import * as skills from './modules/skillData'
+
+const modifiers = Object.keys(skills)
+  .sort()
+  .reduce((a, v) => {
+    a[v] = {
+      level: 0,
+      mod: {}
+    }
+    return a
+  }, {})
+
 Vue.use(Vuex)
 
 const state = {
@@ -19,32 +31,7 @@ const state = {
     name: '',
     value: 1
   },
-  modifiers: {
-    attackBoost: {
-      level: 0,
-      mod: {}
-    },
-    criticalEye: {
-      level: 0,
-      mod: {}
-    },
-    criticalBoost: {
-      level: 0,
-      mod: {}
-    },
-    weaknessExploit: {
-      level: 0,
-      mod: {}
-    },
-    agitator: {
-      level: 0,
-      mod: {}
-    },
-    maximumMight: {
-      level: 0,
-      mod: {}
-    }
-  },
+  modifiers,
   savedConfigs: []
 }
 
@@ -53,9 +40,11 @@ const mutations = {
     state.sharpness = sharpness
   },
   setWeaponRaw (state, raw) {
+    if (Number.isNaN(raw)) raw = 0
     state.weapon = Object.assign({}, state.weapon, { raw })
   },
   setWeaponAffinity (state, affinity) {
+    if (Number.isNaN(affinity)) affinity = 0
     state.weapon = Object.assign({}, state.weapon, { affinity })
   },
   setWeaponClass (state, weaponClass) {

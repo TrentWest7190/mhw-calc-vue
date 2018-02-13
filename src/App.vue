@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h1>Hunter's Handbook: Damage Calculator</h1>
+    <h1>Hunter Helper: MHW Damage Calculator</h1>
     <div id="app">
       <section class="weapon-selector">
         <weapon-selector/>
