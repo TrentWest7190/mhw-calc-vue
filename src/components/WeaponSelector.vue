@@ -63,7 +63,7 @@ export default {
       this.$store.commit('setWeaponRaw', value)
     },
     setWeaponAffinity (input) {
-      let value = input.target.valueAsNumber
+      let value = input.target.value
       if (value > 100) value = 100
       if (value < -100) value = -100
       this.$store.commit('setWeaponAffinity', value)

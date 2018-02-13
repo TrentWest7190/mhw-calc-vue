@@ -44,7 +44,7 @@ const mutations = {
     state.weapon = Object.assign({}, state.weapon, { raw })
   },
   setWeaponAffinity (state, affinity) {
-    if (Number.isNaN(affinity)) affinity = 0
+    if (affinity !== '-' && affinity !== '') affinity = Number(affinity)
     state.weapon = Object.assign({}, state.weapon, { affinity })
   },
   setWeaponClass (state, weaponClass) {
