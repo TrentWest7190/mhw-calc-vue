@@ -17,8 +17,8 @@
       <input :value="raw" @input="setWeaponRaw" type="number"/>
       <span>Affinity</span>
       <input :value="affinity" @input="setWeaponAffinity" type="number"/>
-      <span>Sharpness</span>
-      <select v-model="sharpness">
+      <span v-if="!isRanged">Sharpness</span>
+      <select v-model="sharpness" v-if="!isRanged">
         <option v-for="(val, key) in sharpnessData" :key="key" :value="val">{{ val.name }}</option>
       </select>
     </div>
@@ -45,6 +45,9 @@ export default {
       sharpness: state => state.sharpness,
       weaponClass: state => state.weaponClass
     }),
+    isRanged () {
+      return this.$store.getters['calculator/isRanged']
+    },
     sharpness: {
       get () {
         return this.$store.state.sharpness
