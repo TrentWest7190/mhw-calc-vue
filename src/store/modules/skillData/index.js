@@ -7,6 +7,8 @@ import maximumMight from './MaximumMight'
 import heroics from './Heroics'
 import nonElementalBoost from './NonElementalBoost'
 import resentment from './Resentment'
+import peakPerformance from './PeakPerformance'
+import affinitySliding from './AffinitySliding'
 
 export {
   attackBoost,
@@ -17,5 +19,7 @@ export {
   maximumMight,
   heroics,
   nonElementalBoost,
-  resentment
+  resentment,
+  peakPerformance,
+  affinitySliding
 }
