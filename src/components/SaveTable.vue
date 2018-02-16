@@ -80,6 +80,8 @@ export default {
 
   .config-icon {
     grid-area: icon;
+    width: 50px;
+    height: 50px;
   }
 
   .config-name {
