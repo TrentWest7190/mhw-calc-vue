@@ -70,7 +70,7 @@ export default {
   position: relative;
   display: grid;
   grid-template-columns: 50px auto;
-  grid-template-rows: 50px 20px 50px;
+  grid-template-rows: 50px auto 50px;
   grid-template-areas:
     'icon name'
     'desc desc'
